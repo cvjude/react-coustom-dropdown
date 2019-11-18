@@ -1,0 +1,74 @@
+@mixin mobile {
+  @media (max-width: #{550px}) {
+    @content;
+  }
+}
+
+@mixin smallerTabs {
+  @media (max-width: #{850px}) {
+    @content;
+  }
+}
+
+%shared {
+  padding: 10px;
+  border: none;
+  color: rgb(42, 43, 45);
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  text-align: left;
+  outline: none;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.dropDown {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: left;
+
+  @include mobile {
+    width: 300px;
+  }
+
+  .currentValue {
+    @extend %shared;
+    font-size: 16px;
+    position: relative;
+    border-bottom: 1px solid rgba($color: #2a2b2d, $alpha: 0.1);
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      background: rgb(42, 43, 45);
+      right: 10px;
+      top: 15px;
+    }
+  }
+
+  .dropDownButtons {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    overflow: auto;
+    z-index: 120;
+
+    button {
+      @extend %shared;
+      color: rgba(42, 43, 45, 0.8);
+      border-bottom: 1px solid rgba($color: #2a2b2d, $alpha: 0.1);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+}
