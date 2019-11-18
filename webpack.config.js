@@ -3,13 +3,13 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  entry: {
-    main: "./src/index.js"
-  },
+  entry: "./src/index.js",
   output: {
     path: __dirname + "/dist",
     publicPath: "/",
-    filename: "[name].js"
+    filename: "index.js",
+    library: "react-custom-dropdown",
+    libraryTarget: "commonjs2"
   },
   target: "web",
   devtool: "source-map",
@@ -34,7 +34,16 @@ module.exports = {
       },
       {
         test: /\.(css|s[ac]ss)$/,
-        use: ["style-loader", "sass-loader"]
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === "development"
+            }
+          },
+          "css-loader",
+          "sass-loader"
+        ]
       }
     ]
   },
