@@ -11,32 +11,35 @@
 }
 
 %shared {
-  padding: 10px;
+  padding: 0 10px;
   border: none;
   color: rgb(42, 43, 45);
-  font-size: 16px;
+  font-size: 0.9em;
   background: rgba($color: #4e575c, $alpha: 0.1);
   font-weight: bold;
   text-align: left;
   outline: none;
+  min-height: 40px;
   cursor: pointer;
   font-weight: 300;
+  display: flex;
+  align-content: center;
 }
 
 .dropDown {
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: auto;
+  // height: auto;
   border-radius: 5px;
   overflow: hidden;
   text-align: left;
   z-index: 10;
   position: absolute;
+  // min-height: 40px;
 
   .currentValue {
     @extend %shared;
-    font-size: 16px;
     position: relative;
     border-bottom: 1px solid rgba($color: #2a2b2d, $alpha: 0.1);
 
@@ -53,14 +56,16 @@
   }
 
   .dropDownButtons {
-    display: flex;
     flex-direction: column;
     transform: scaleY(0);
     opacity: 0;
     transform-origin: top;
     overflow: auto;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     overflow: hidden;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
 
     .options {
       @extend %shared;
@@ -75,6 +80,13 @@
   }
 
   .open {
+    display: flex;
+    animation: show 0.3s ease-in-out forwards;
+  }
+}
+
+@keyframes show {
+  to {
     transform: scaleY(1);
     opacity: 1;
   }
