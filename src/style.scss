@@ -11,34 +11,35 @@
 }
 
 %shared {
-  padding: 10px;
+  padding: 0 10px;
   border: none;
   color: rgb(42, 43, 45);
-  font-size: 16px;
-  background: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+  background: rgba($color: #4e575c, $alpha: 0.1);
   font-weight: bold;
   text-align: left;
   outline: none;
+  min-height: 40px;
   cursor: pointer;
   font-weight: 300;
+  display: flex;
+  align-content: center;
 }
 
 .dropDown {
-  width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  height: auto;
+  // height: auto;
   border-radius: 5px;
   overflow: hidden;
   text-align: left;
-
-  @include mobile {
-    width: 300px;
-  }
+  z-index: 10;
+  position: absolute;
+  // min-height: 40px;
 
   .currentValue {
     @extend %shared;
-    font-size: 16px;
     position: relative;
     border-bottom: 1px solid rgba($color: #2a2b2d, $alpha: 0.1);
 
@@ -55,20 +56,38 @@
   }
 
   .dropDownButtons {
-    display: flex;
     flex-direction: column;
-    height: 200px;
+    transform: scaleY(0);
+    opacity: 0;
+    transform-origin: top;
     overflow: auto;
-    z-index: 120;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
 
-    button {
+    .options {
       @extend %shared;
+      background: white;
       color: rgba(42, 43, 45, 0.8);
-      border-bottom: 1px solid rgba($color: #2a2b2d, $alpha: 0.1);
+      border-bottom: 1px solid rgba($color: #2a2b2d, $alpha: 0.5);
 
       &:hover {
         background: rgba(255, 255, 255, 0.8);
       }
     }
+  }
+
+  .open {
+    display: flex;
+    animation: show 0.3s ease-in-out forwards;
+  }
+}
+
+@keyframes show {
+  to {
+    transform: scaleY(1);
+    opacity: 1;
   }
 }

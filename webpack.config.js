@@ -1,3 +1,4 @@
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -5,8 +6,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: __dirname + "/dist",
-    publicPath: "/",
+    path: path.resolve(__dirname, "dist"),
     filename: "index.js",
     library: "react-custom-dropdown",
     libraryTarget: "commonjs2"
@@ -34,23 +34,14 @@ module.exports = {
       },
       {
         test: /\.(css|s[ac]ss)$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: process.env.NODE_ENV === "development"
-            }
-          },
-          "css-loader",
-          "sass-loader"
-        ]
+        include: path.resolve(__dirname, "src"),
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: "[name].css"
     })
   ],
   externals: {
