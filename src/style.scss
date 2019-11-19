@@ -13,9 +13,9 @@
 %shared {
   padding: 0 10px;
   border: none;
-  color: rgb(42, 43, 45);
+  color: white;
   font-size: 0.9em;
-  background: rgba($color: #4e575c, $alpha: 0.1);
+  background: #4e575c;
   font-weight: bold;
   text-align: left;
   outline: none;
@@ -36,6 +36,7 @@
   text-align: left;
   z-index: 10;
   position: absolute;
+  // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   // min-height: 40px;
 
   .currentValue {
@@ -49,7 +50,7 @@
       width: 10px;
       height: 10px;
       clip-path: polygon(0 0, 100% 0, 50% 100%);
-      background: rgb(42, 43, 45);
+      background: white;
       right: 10px;
       top: 15px;
     }

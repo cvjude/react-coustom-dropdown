@@ -1,6 +1,6 @@
 {
-  "name": "react-custom-dropdown",
-  "version": "1.0.0",
+  "name": "react-custom-dropdown-menu",
+  "version": "1.0.2",
   "description": "Coustomizable drop down menu for react",
   "main": "dist/index.js",
   "scripts": {
