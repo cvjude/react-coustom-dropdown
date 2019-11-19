@@ -50,15 +50,15 @@ export default class DropDown extends Component {
       </button>
     ));
     return (
-      <div className="dropDown">
+      <div className={`dropDown ${openDrop ? "open" : "close-drop"}`}>
         <button
-          className="currentValue"
+          className={`currentValue ${openDrop ? "open" : "close"}`}
           type="button"
           onClick={this.revileDropDown}
         >
-          {presentValue ? presentValue : current}
+          <p>{presentValue ? presentValue : current}</p>
         </button>
-        <div className={`dropDownButtons ${openDrop ? "open" : ""}`}>
+        <div className={`dropDownButtons ${openDrop ? "open" : "close"}`}>
           {pair}
         </div>
       </div>
