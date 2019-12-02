@@ -15,7 +15,7 @@
   border: none;
   color: white;
   font-size: 0.9em;
-  background: #4e575c;
+  background: #008737;
   font-weight: bold;
   text-align: left;
   outline: none;
@@ -85,7 +85,7 @@
       @extend %shared;
       background: white;
       color: rgba(42, 43, 45, 0.8);
-      border-bottom: 1px solid rgba($color: #2a2b2d, $alpha: 0.5);
+      border-bottom: 1px solid #008737;
 
       &:hover {
         background: rgba(255, 255, 255, 0.8);
